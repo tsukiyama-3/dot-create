@@ -23,6 +23,30 @@
     -->
     <script defer src="/__/firebase/init.js?useEmulator=true"></script>
 
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+    
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-analytics.js"></script>
+    
+    <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyAjq3D4De9m6_vOnFaefyqiD2tbBOJYuIg",
+            authDomain: "dot-creator.firebaseapp.com",
+            projectId: "dot-creator",
+            storageBucket: "dot-creator.appspot.com",
+            messagingSenderId: "372946048427",
+            appId: "1:372946048427:web:32a9d01a1579dd73c72eee",
+            measurementId: "G-GTL02DQBNR"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    </script>
+
     <style media="screen">
       body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
       #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
