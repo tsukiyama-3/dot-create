@@ -23,19 +23,20 @@
       </form>
     </div>
   </div>
-  <img v-if="imageUrl" :src="imageUrl">
-  <a
-    v-if="imageUrl" :href="imageUrl" download
-  >
-    Store!
-  </a>
+  <div v-if="modalFlug">
+    <StoreModal :image-url="imageUrl" />
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import { useImage } from '../composables/image'
+import StoreModal from '../components/StoreModal.vue'
 
 export default defineComponent({
+  components: {
+    StoreModal
+  },
   setup: () => {
     const currentColor = ref('#ffffff')
     const changeColor = (e: any) => {
@@ -47,9 +48,12 @@ export default defineComponent({
     const storeImg = async () => {
       gridFlug.value = false
       await storeImage(dom)
+      modalFlug.value = true
     }
 
     const gridFlug = ref(true)
+
+    const modalFlug = ref(false)
 
     return {
       changeColor,
@@ -57,7 +61,8 @@ export default defineComponent({
       gridFlug,
       dom,
       storeImg,
-      imageUrl
+      imageUrl,
+      modalFlug
     }
   }
 })
