@@ -1,13 +1,19 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <router-link to="/">Home</router-link>
+  <Header />
   <router-view />
+  <Footer />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import Header from './components/Header.vue'
+import Footer from './components/Footer.vue'
 
 export default defineComponent({
+  components: {
+    Header,
+    Footer,
+  },
   name: 'App',
 })
 </script>
@@ -17,8 +23,7 @@ export default defineComponent({
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: #2e2e2e;
+  background-color: #fffffe;
 }
 </style>
