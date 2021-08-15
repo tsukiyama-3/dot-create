@@ -1,12 +1,14 @@
 <template>
   <div class="w-1040px my-0 mx-auto flex justify-between py-20">
-    <div class="w-512px h-512px border-1 border-collapse" ref="dom">
-      <div class="grid grid-cols-64" v-for="n of 64" :key="n">
-        <div class="w-8px h-8px hover:bg-hex-dddddd" :class="{ dotgrid : gridFlug }" @click="changeColor" v-for="n of 64" :key="n">
+    <div class="w-512px h-512px border-1 bg-hex-fffffe border-collapse">
+      <div class="w-512px h-512px" ref="dom">
+        <div class="grid grid-cols-64" v-for="n of 64" :key="n">
+          <div class="w-8px h-8px hover:bg-hex-dddddd" :class="{ dotgrid : gridFlug }" @click="changeColor" v-for="n of 64" :key="n">
+          </div>
         </div>
       </div>
     </div>
-    <div class="w-488px h-512px flex items-end">
+    <div class="w-488px h-512px flex items-end bg-hex-fffffe rounded-2xl p-4">
       <form>
         <input type="color" v-model="currentColor"><br>
         <input type="color.hex" v-model="currentColor"><br>
