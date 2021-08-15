@@ -20,6 +20,9 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import {
+  clearAllBodyScrollLocks
+} from 'body-scroll-lock'
 
 export default defineComponent({
   props: ['imageUrl', 'modalFlug'],
@@ -27,6 +30,7 @@ export default defineComponent({
     const imageUrl = props.imageUrl
     const modalFlug = props.modalFlug
     const closeModal = () => {
+      clearAllBodyScrollLocks()
       emit('modalFlug', false)
     }
     return {

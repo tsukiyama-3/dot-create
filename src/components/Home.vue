@@ -1,7 +1,7 @@
 <template>
   <div class="w-1040px my-0 mx-auto flex justify-between py-20">
     <div class="w-512px h-512px border-1 bg-hex-fffffe border-collapse">
-      <div class="w-512px h-512px" ref="dom">
+      <div class="w-512px h-512px overflow-scroll" ref="dom">
         <div class="grid grid-cols-64" v-for="n of 64" :key="n">
           <div class="w-8px h-8px hover:bg-hex-dddddd" :class="{ dotgrid : gridFlug }" @click="changeColor" v-for="n of 64" :key="n">
           </div>
@@ -23,8 +23,8 @@
       </form>
     </div>
   </div>
-  <div v-if="modalFlug">
-    <StoreModal :image-url="imageUrl" @modalFlug="modalFlug = $event" />
+  <div class="modal">
+    <StoreModal v-if="modalFlug" :image-url="imageUrl" @modalFlug="modalFlug = $event" />
   </div>
 </template>
 
@@ -32,6 +32,9 @@
 import { defineComponent, ref } from 'vue'
 import { useImage } from '../composables/image'
 import StoreModal from '../components/StoreModal.vue'
+import {
+  disableBodyScroll,
+} from 'body-scroll-lock'
 
 export default defineComponent({
   components: {
@@ -49,11 +52,13 @@ export default defineComponent({
       gridFlug.value = false
       await storeImage(dom)
       modalFlug.value = true
+      const modal: any = document.querySelector('.modal')
+      disableBodyScroll(modal)
     }
 
     const gridFlug = ref(true)
 
-    const modalFlug = ref(true)
+    const modalFlug = ref(false)
 
     return {
       changeColor,
