@@ -1,5 +1,5 @@
 <template>
-  <div class="over-lay flex items-center justify-center">
+  <div class="over-lay flex items-center justify-center" @click="closeModal">
     <div class="w-800px h-480px p-12 box-border bg-hex-fffffe rounded-2xl">
       <div @click="closeModal">x</div>
       <div class="flex items-center justify-between">
@@ -22,21 +22,17 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  props: {
-    modalFlug: {
-      type: Boolean
-    },
-    imageUrl: {
-      type: String
-    }
-  },
-  setup: (props) => {
+  props: ['imageUrl', 'modalFlug'],
+  setup: (props, { emit }) => {
     const imageUrl = props.imageUrl
     const modalFlug = props.modalFlug
-    console.log(imageUrl)
+    const closeModal = () => {
+      emit('modalFlug', false)
+    }
     return {
       modalFlug,
-      imageUrl
+      imageUrl,
+      closeModal
     }
   },
 })

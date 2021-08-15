@@ -24,7 +24,7 @@
     </div>
   </div>
   <div v-if="modalFlug">
-    <StoreModal :image-url="imageUrl" />
+    <StoreModal :image-url="imageUrl" @modalFlug="modalFlug = $event" />
   </div>
 </template>
 
@@ -53,7 +53,7 @@ export default defineComponent({
 
     const gridFlug = ref(true)
 
-    const modalFlug = ref(false)
+    const modalFlug = ref(true)
 
     return {
       changeColor,
