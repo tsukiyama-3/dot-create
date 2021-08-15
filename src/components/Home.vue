@@ -25,7 +25,7 @@ import { useImage } from '../composables/image'
 export default defineComponent({
   setup: () => {
     const currentColor = ref('#ffffff')
-    const changeColor = (e) => {
+    const changeColor = (e: any) => {
       e.currentTarget.style.backgroundColor = currentColor.value
     }
 
