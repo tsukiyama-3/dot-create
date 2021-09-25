@@ -48,17 +48,19 @@ export default defineComponent({
 
     const dom = ref(null)
     const { imageUrl, storeImage } = useImage()
+    const gridFlug = ref(true)
+    const modalFlug = ref(false)
     const storeImg = async () => {
+      const gridFlugStore = ref(gridFlug.value)
+      // grid線を消す
       gridFlug.value = false
       await storeImage(dom)
+      // grid線を元に戻す
+      gridFlug.value = gridFlugStore.value
       modalFlug.value = true
       const modal: any = document.querySelector('.modal')
       disableBodyScroll(modal)
     }
-
-    const gridFlug = ref(true)
-
-    const modalFlug = ref(false)
 
     return {
       changeColor,
