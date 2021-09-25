@@ -4,8 +4,8 @@
       <div class="w-512px h-512px overflow-scroll" ref="dom">
         <div class="grid grid-cols-64" v-for="n of 64" :key="n">
           <div
-            class="w-8px h-8px hover:bg-hex-dddddd"
-            :class="{ dotgrid : gridFlug }"
+            class="w-8px h-8px bg-hex-ffffff hover:bg-hex-dddddd dot"
+            :class="{ dotgrid : gridFlug, defaultColor : resetFlug === true}"
             @click="changeColor"
             v-for="n of 64"
             :key="n"
@@ -25,6 +25,12 @@
           class="cursor-pointer flex items-center justify-center w-184px h-48px font-bold text-xl rounded bg-hex-00ebc7 text-hex-00214d transition-all duration-400 hover:rounded-2xl"
         >
           Complete
+        </a>
+        <a
+          @click="resetDom"
+          class="cursor-pointer flex items-center justify-center w-184px h-48px font-bold text-xl rounded bg-hex-00ebc7 text-hex-00214d transition-all duration-400 hover:rounded-2xl"
+        >
+          Reset
         </a>
       </form>
     </div>
@@ -55,6 +61,7 @@ export default defineComponent({
     const dom = ref(null)
     const { storeImage } = useImage()
     const gridFlug = ref(true)
+    const resetFlug = ref(false)
     const modalFlug = ref(false)
     const imageUrl: any = ref(null)
     const completeImage = async () => {
@@ -70,6 +77,15 @@ export default defineComponent({
       disableBodyScroll(modal)
     }
 
+    // このメソッドのコードダサすぎるから直したい
+    const resetDom = (() => {
+      resetFlug.value = true
+      let obj: any = document.getElementsByClassName("dot")
+      for( let i = 0; i < obj.length; i++){
+        obj[i].style.backgroundColor = "#ffffff";
+      }
+    })
+
     return {
       changeColor,
       currentColor,
@@ -77,7 +93,9 @@ export default defineComponent({
       dom,
       completeImage,
       imageUrl,
-      modalFlug
+      modalFlug,
+      resetFlug,
+      resetDom
     }
   }
 })
@@ -88,5 +106,9 @@ export default defineComponent({
   border: 1px solid #eee;
   border-collapse: collapse;
   box-sizing: border-box;
+}
+
+.defaultColor {
+  background-color: white;
 }
 </style>
