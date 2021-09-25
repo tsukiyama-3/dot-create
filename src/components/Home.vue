@@ -3,7 +3,13 @@
     <div class="w-512px h-512px border-1 bg-hex-fffffe border-collapse">
       <div class="w-512px h-512px overflow-scroll" ref="dom">
         <div class="grid grid-cols-64" v-for="n of 64" :key="n">
-          <div class="w-8px h-8px hover:bg-hex-dddddd" :class="{ dotgrid : gridFlug }" @click="changeColor" v-for="n of 64" :key="n">
+          <div
+            class="w-8px h-8px hover:bg-hex-dddddd"
+            :class="{ dotgrid : gridFlug }"
+            @click="changeColor"
+            v-for="n of 64"
+            :key="n"
+          >
           </div>
         </div>
       </div>
@@ -18,7 +24,7 @@
           @click="completeImage"
           class="cursor-pointer flex items-center justify-center w-184px h-48px font-bold text-xl rounded bg-hex-00ebc7 text-hex-00214d transition-all duration-400 hover:rounded-2xl"
         >
-          Complete!
+          Complete
         </a>
       </form>
     </div>
