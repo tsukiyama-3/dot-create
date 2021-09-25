@@ -9,9 +9,9 @@ export const useImage = () => {
     } catch (e) {
       console.error('画像化に失敗したよ！！', e)
     }
+    return imageUrl
   }
   return {
     storeImage,
-    imageUrl,
   }
 }

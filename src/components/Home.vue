@@ -15,7 +15,7 @@
         <input type="checkbox" id="grid-flug" v-model="gridFlug">
         <label for="grid-flug">Grid / {{ gridFlug ? 'OFF' : 'ON' }}</label><br>
         <a
-          v-on:click="storeImg"
+          @click="completeImage"
           class="cursor-pointer flex items-center justify-center w-184px h-48px font-bold text-xl rounded bg-hex-00ebc7 text-hex-00214d transition-all duration-400 hover:rounded-2xl"
         >
           Complete!
@@ -47,14 +47,16 @@ export default defineComponent({
     }
 
     const dom = ref(null)
-    const { imageUrl, storeImage } = useImage()
+    const { storeImage } = useImage()
     const gridFlug = ref(true)
     const modalFlug = ref(false)
-    const storeImg = async () => {
+    const imageUrl: any = ref(null)
+    const completeImage = async () => {
       const gridFlugStore = ref(gridFlug.value)
       // grid線を消す
       gridFlug.value = false
-      await storeImage(dom)
+      imageUrl.value = await storeImage(dom)
+
       // grid線を元に戻す
       gridFlug.value = gridFlugStore.value
       modalFlug.value = true
@@ -67,7 +69,7 @@ export default defineComponent({
       currentColor,
       gridFlug,
       dom,
-      storeImg,
+      completeImage,
       imageUrl,
       modalFlug
     }
