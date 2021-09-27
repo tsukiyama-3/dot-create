@@ -19,3 +19,8 @@ https://dot-creator.web.app/
 `firebase login`
 
 `firebase init`
+
+## todo
+- completeボタンを押してから処理が長いのどうにかする ロード画面とか
+- デザインどうにかする
+- 塗りつぶし機能とか諸々
