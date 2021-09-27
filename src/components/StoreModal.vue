@@ -10,7 +10,7 @@
             :href="imageUrl"
             download
           >
-            Store!
+            Store
           </a>
         </div>
       </div>

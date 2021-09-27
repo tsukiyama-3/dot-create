@@ -14,25 +14,27 @@
         </div>
       </div>
     </div>
-    <div class="w-488px h-512px flex items-end bg-hex-fffffe rounded-2xl p-4">
+    <div class="w-488px h-512px flex items-end content-end flex-wrap bg-hex-fffffe rounded-2xl p-4">
       <form>
         <input type="color" v-model="currentColor"><br>
         <input type="color.hex" v-model="currentColor"><br>
         <input type="checkbox" id="grid-flug" v-model="gridFlug">
         <label for="grid-flug">Grid / {{ gridFlug ? 'OFF' : 'ON' }}</label><br>
+      </form>
+      <div class="w-full flex justify-between mt-4">
         <a
           @click="completeImage"
-          class="cursor-pointer flex items-center justify-center w-184px h-48px font-bold text-xl rounded bg-hex-00ebc7 text-hex-00214d transition-all duration-400 hover:rounded-2xl"
+          class="cursor-pointer flex items-center justify-center w-12/25 h-48px font-bold text-xl rounded bg-hex-00ebc7 text-hex-00214d transition-all duration-400 hover:rounded-2xl"
         >
           Complete
         </a>
         <a
           @click="resetDom"
-          class="cursor-pointer flex items-center justify-center w-184px h-48px font-bold text-xl rounded bg-hex-00ebc7 text-hex-00214d transition-all duration-400 hover:rounded-2xl"
+          class="cursor-pointer flex items-center justify-center w-12/25 h-48px font-bold text-xl rounded bg-hex-00ebc7 text-hex-00214d transition-all duration-400 hover:rounded-2xl"
         >
           Reset
         </a>
-      </form>
+      </div>
     </div>
   </div>
   <div class="modal">
