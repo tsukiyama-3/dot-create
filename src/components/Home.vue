@@ -16,11 +16,13 @@
       </div>
     </div>
     <div class="w-488px h-512px flex items-end content-end flex-wrap bg-hex-fffffe rounded-2xl p-4">
-      <form>
+      <form class="select-none">
         <input type="color" v-model="currentColor"><br>
         <input type="color.hex" v-model="currentColor"><br>
-        <input type="checkbox" id="grid-flug" v-model="gridFlug">
-        <label for="grid-flug">Grid / {{ gridFlug ? 'OFF' : 'ON' }}</label><br>
+        <input type="checkbox" id="grid-flug" v-model="gridFlug" class="hidden">
+        <label for="grid-flug" class="w-40px h-40px flex items-center justify-center border-1 border-gray-500 rounded-xl cursor-pointer">
+          <fa icon="hashtag" />
+        </label>
       </form>
       <div class="w-full flex justify-between mt-4">
         <a
