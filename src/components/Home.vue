@@ -6,7 +6,8 @@
           <div
             class="w-8px h-8px bg-hex-ffffff hover:bg-hex-dddddd dot"
             :class="{ dotgrid : gridFlug, defaultColor : resetFlug === true}"
-            @click="changeColor"
+            @click="changeColorClick"
+            @mouseenter="changeColorMouse"
             v-for="n of 64"
             :key="n"
           >
@@ -56,8 +57,13 @@ export default defineComponent({
   },
   setup: () => {
     const currentColor = ref('#ffffff')
-    const changeColor = (e: any) => {
+    const changeColorClick = (e: any) => {
       e.currentTarget.style.backgroundColor = currentColor.value
+    }
+    const changeColorMouse = (e: any) => {
+      if (e.ctrlKey) {
+        e.currentTarget.style.backgroundColor = currentColor.value
+      }
     }
 
     const dom = ref(null)
@@ -89,7 +95,8 @@ export default defineComponent({
     })
 
     return {
-      changeColor,
+      changeColorClick,
+      changeColorMouse,
       currentColor,
       gridFlug,
       dom,
