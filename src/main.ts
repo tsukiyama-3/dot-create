@@ -4,6 +4,15 @@ import 'firebase/analytics'
 import App from "./App.vue"
 import router from './router/router'
 import "virtual:windi.css"
+import { library } from '@fortawesome/fontawesome-svg-core'
+import {
+  faHashtag,
+} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(
+  faHashtag,
+)
 
 var firebaseConfig = {
   apiKey: "AIzaSyAjq3D4De9m6_vOnFaefyqiD2tbBOJYuIg",
@@ -15,9 +24,10 @@ var firebaseConfig = {
   measurementId: "G-GTL02DQBNR"
 };
 
-// console.log(firebase)
-
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
-createApp(App).use(router).mount('#app')
+let app = createApp(App)
+app.use(router)
+app.component('fa', FontAwesomeIcon)
+app.mount('#app')
